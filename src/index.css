@@ -1,5 +1,5 @@
 * {
-  font-family: "Malgun Gothic", dotum, gulim, sans-serif;
+  font-family: "Malgun Gothic", dotum, gulim, sans-serif !important;
 }
 body {
   margin: 0;
