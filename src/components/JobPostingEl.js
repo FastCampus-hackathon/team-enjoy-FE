@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
@@ -47,7 +47,6 @@ const PostInfo = styled.div`
     color: #949494;
   }
   .likeBtn {
-    color: #c4c4c4;
     cursor: pointer;
   }
 `;
@@ -130,6 +129,7 @@ function JobPostingEl() {
     "apply-cnt": "0",
   };
 
+  const [toggle, setToggle] = useState(false);
   function getExpDate(props_date) {
     const week = ["일", "월", "화", "수", "목", "금", "토"];
     const month = new Date(props_date).getMonth() + 1;
@@ -144,7 +144,21 @@ function JobPostingEl() {
         <JobPosting>
           <PostInfo>
             <div className="title">{props.position.title}</div>
-            <AiOutlineStar className="likeBtn" />
+            {toggle ? (
+              <AiFillStar
+                className="likeBtn"
+                size={18}
+                color="#ffe600"
+                onClick={() => setToggle(false)}
+              />
+            ) : (
+              <AiOutlineStar
+                className="likeBtn"
+                size={18}
+                color="#c4c4c4"
+                onClick={() => setToggle(true)}
+              />
+            )}
             <div className="deadline">
               {getExpDate(props["expiration-date"])}
             </div>
