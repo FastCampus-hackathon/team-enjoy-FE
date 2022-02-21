@@ -1,0 +1,11 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="img_ci_icon" width="24"  height="25" ><defs><symbol id="svg_saramin_ci_icon" viewBox="0 0 24 25">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M0 0.476H24V24.476H0z" transform="translate(-24 -32) translate(24 32)" fill="none"></path>
+            <g transform="translate(-24 -32) translate(24 32) translate(2 2.476)" fill="none">
+                <ellipse cx="4.266" cy="4.18" fill="#4876EF" rx="4.266" ry="4.18"></ellipse>
+                <ellipse cx="15.641" cy="4.18" fill="#B4C0D3" rx="4.266" ry="4.18"></ellipse>
+                <ellipse cx="4.266" cy="15.328" fill="#B4C0D3" rx="4.266" ry="4.18"></ellipse>
+                <ellipse cx="15.641" cy="15.328" fill="#00D3AB" rx="4.266" ry="4.18"></ellipse>
+            </g>
+        </g>
+    </symbol></defs><use xlink:href="#svg_saramin_ci_icon"></use></svg>
