@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const SearchBox = styled.div`
   display: flex;
@@ -18,7 +19,8 @@ const SearchBox = styled.div`
     color: #4876ef;
     background: #eff5ff;
 
-    input {
+    input,
+    .searchIcon {
       &::placeholder {
         color: #4876ef;
       }
@@ -26,13 +28,13 @@ const SearchBox = styled.div`
     }
   }
 
-  img {
-    width: 24px;
-    margin-right: 6px;
+  .searchIcon {
+    color: #8491a7;
   }
 
   input {
     flex: 1;
+    margin-left: 6px;
     border: none;
     background: none;
     padding: 0;
@@ -54,7 +56,7 @@ function SearchBar() {
         inputFocus.current.focus();
       }}
     >
-      <img src="" alt="" />
+      <AiOutlineSearch className="searchIcon" size={24} />
       <input
         onChange={(e) => setSearchWord(e.target.value)}
         onKeyPress={(e) => {
