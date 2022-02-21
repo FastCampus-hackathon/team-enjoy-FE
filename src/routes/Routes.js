@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Compare from "../views/Compare";
+import Compare from "views/Compare";
 
 function AllRoutes() {
   return (
