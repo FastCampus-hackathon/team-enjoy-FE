@@ -1,8 +1,13 @@
 import React from "react";
 import SearchContext from "store/SearchContext";
+import UserJobs from "./UserJobs";
 
 function Store({ children }) {
-  return <SearchContext>{children}</SearchContext>;
+  return (
+    <SearchContext>
+      <UserJobs>{children}</UserJobs>
+    </SearchContext>
+  );
 }
 
 export default Store;
