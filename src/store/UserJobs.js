@@ -11,7 +11,7 @@ export const UserJobsData = createContext({
 function UserJobs({ children }) {
   const [jobEducationList, setJobEducationList] = useState([]);
   const [jobExperienceList, setJobExperienceList] = useState([]);
-  const [selectedTag, setSelectedTag] = useState(compareBtnList[0]);
+  const [selectedTag, setSelectedTag] = useState(compareBtnList[2]);
   const [selectedList, setSelectedList] = useState([]);
 
   useEffect(() => {
@@ -19,10 +19,12 @@ function UserJobs({ children }) {
     getJobExperienceList();
   }, []);
   useEffect(() => {
-    if (compareBtnList[0] === selectedTag) {
+    if (compareBtnList[2] === selectedTag) {
       setSelectedList(jobEducationList);
-    } else if (compareBtnList[1] === selectedTag) {
+    } else if (compareBtnList[3] === selectedTag) {
       setSelectedList(jobExperienceList);
+    } else {
+      setSelectedList(jobEducationList);
     }
   }, [selectedTag]);
   //학력별 api
