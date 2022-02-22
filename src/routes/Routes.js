@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Compare from "views/Compare";
-import SearchBar from "components/SearchBar";
+import Home from "views/Home";
 
 function AllRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<SearchBar />} />
+      <Route path="/" element={<Home />} />
       <Route path="/compare" element={<Compare />} />
     </Routes>
   );
