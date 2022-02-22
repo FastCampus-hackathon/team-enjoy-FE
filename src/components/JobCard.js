@@ -27,19 +27,30 @@ const Container = styled.div`
     background-color: #dae0e9;
   }
 `;
-const Tag = styled.div`
+const DdayTag = styled.div`
   padding: 4px 6px;
   width: fit-content;
   border-radius: 4px;
-  background-color: ${({ color }) => (color ? color : "#7DAAFF")};
+  background-color: #ff5757;
   color: #fff;
   font-size: 10px;
   font-weight: 700;
   position: absolute;
-  top: ${({ top }) => top};
-  left: ${({ left }) => left};
-  right: ${({ right }) => right};
-  bottom: ${({ bottom }) => bottom};
+  top: 7px;
+  left: 7px;
+`;
+
+const Tag = styled.div`
+  padding: 4px 6px;
+  width: fit-content;
+  border: 1px solid #5c667b;
+  border-radius: 4px;
+  color: #5c667b;
+  font-size: 10px;
+  font-weight: 700;
+  & + & {
+    margin-left: 3px;
+  }
 `;
 
 const BottomInfo = styled.div`
@@ -48,6 +59,7 @@ const BottomInfo = styled.div`
 
   .title {
     width: 100%;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,7 +73,16 @@ const BottomInfo = styled.div`
     left: 10px;
     cursor: pointer;
   }
+
+  .tagList {
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    display: flex;
+    justify-content: end;
+  }
 `;
+
 function JobCard({ props }) {
   const [checked, setChecked] = useState(false);
   const { selectedJob, setSelectedJob } = useContext(SelectedJob);
@@ -75,14 +96,18 @@ function JobCard({ props }) {
   return (
     <Container>
       <div className="topBorder" />
-      <Tag color="#FF5757" top="7px" left="7px">
+      <DdayTag>
         {calcDday(props["expiration-timestamp"]) < 0
           ? "마감"
           : `D-${calcDday(props["expiration-timestamp"])}`}
-      </Tag>
+      </DdayTag>
       <div className="company">{props.company.detail.name}</div>
       <BottomInfo>
         <div className="title">{props.position.title}</div>
+        <div className="tagList">
+          <Tag>{props.position.location.name.split(",")[0].split("&gt;")}</Tag>
+          <Tag>{props.position["experience-level"].name}</Tag>
+        </div>
         <BsCheckSquare
           className="icon"
           size={20}
