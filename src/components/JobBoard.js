@@ -29,6 +29,9 @@ const Item = styled.div`
     text-align: center;
     width: 150px;
     margin-right: 10px;
+    color: #5c667b;
+    font-size: 14px;
+    line-height: 20px;
   }
   .jobList {
     display: flex;
