@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -100,7 +101,12 @@ function JobPostingEl({ props }) {
                 className="likeBtn"
                 size={18}
                 color="#c4c4c4"
-                onClick={() => setToggle(true)}
+                onClick={() => {
+                  setToggle(true);
+                  axios
+                    .post("/apis/scrap/add", [props])
+                    .then((res) => console.log(res.data));
+                }}
               />
             )}
             <div className="deadline">

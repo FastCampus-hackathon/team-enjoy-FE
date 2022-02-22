@@ -27,7 +27,6 @@ function Search() {
   const { searchWord, getJobPosting, resultSearch } = useContext(SearchWord);
 
   useEffect(() => {
-    console.log("수정", searchWord);
     if (searchWord) {
       getJobPosting(searchWord);
     }
