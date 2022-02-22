@@ -3,15 +3,18 @@ import Header from "components/Header";
 import JobBoard from "components/JobBoard";
 import SideBar from "components/SideBar";
 import compareBtnList from "data/compareBtnList";
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { UserJobsData } from "store/UserJobs";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
 
 function Compare() {
   const [isClosed, setIsClosed] = useState(true);
-  const { selectedTag, setSelectedTag, selectedList } =
+  const { selectedTag, setSelectedTag, jobsNum, update, selectedList } =
     useContext(UserJobsData);
+  useEffect(() => {
+    update();
+  }, []);
   return (
     <Fragment>
       <Header />
@@ -21,7 +24,7 @@ function Compare() {
           <h1>스크랩/관심기업</h1>
           <div className="tab">
             <span>스크랩</span>
-            <div>{4}</div>
+            <div>{jobsNum}</div>
           </div>
           <CompareBtnList>
             {compareBtnList.map((item) => {

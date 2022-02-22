@@ -6,6 +6,8 @@ export const UserJobsData = createContext({
   selectedTag: {},
   setSelectedTag: () => {},
   selectedList: [],
+  jobsNum: 0,
+  update: () => {},
 });
 
 function UserJobs({ children }) {
@@ -13,11 +15,11 @@ function UserJobs({ children }) {
   const [jobExperienceList, setJobExperienceList] = useState([]);
   const [selectedTag, setSelectedTag] = useState(compareBtnList[2]);
   const [selectedList, setSelectedList] = useState([]);
-
+  const [jobsNum, setJobsNum] = useState(0);
   useEffect(() => {
-    getJobEducationList();
-    getJobExperienceList();
+    update();
   }, []);
+
   useEffect(() => {
     if (compareBtnList[2] === selectedTag) {
       setSelectedList(jobEducationList);
@@ -27,11 +29,31 @@ function UserJobs({ children }) {
       setSelectedList(jobEducationList);
     }
   }, [selectedTag]);
+  function update() {
+    getJobEducationList();
+    getJobExperienceList();
+    getAllJobs();
+  }
+
+  // 전체 api
+  function getAllJobs() {
+    axios.get("/apis/scrap/deploy").then((res) => {
+      setJobsNum(res.data.length);
+    });
+  }
   //학력별 api
   function getJobEducationList() {
     axios.get("/apis/scrap/education").then((res) => {
-      setJobEducationList(Object.entries(res.data));
-      setSelectedList(Object.entries(res.data));
+      const data = Object.entries(res.data);
+      data.forEach((item) => {
+        const newArray = item[1];
+        newArray.sort((dataA, dataB) => {
+          return dataA["expiration-timestamp"] - dataB["expiration-timestamp"];
+        });
+        item[1] = newArray;
+      });
+      setJobEducationList(data);
+      setSelectedList(data);
     });
   }
   //경력별 api
@@ -46,6 +68,8 @@ function UserJobs({ children }) {
         selectedTag,
         setSelectedTag,
         selectedList,
+        jobsNum,
+        update,
       }}
     >
       {children}

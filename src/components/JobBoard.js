@@ -1,18 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
+import JobCard from "./JobCard";
 
 function JobBoard({ selectedList, detailList }) {
   return (
     <JobBoardStyle>
       {selectedList.length > 0 &&
-        selectedList.map((job) => {
+        selectedList.map((jobs) => {
           return (
             <Item key={uuid()}>
-              <div className="title">{detailList[job[0]]}</div>
+              <div className="title">{detailList[jobs[0]]}</div>
               <div className="jobList">
-                {job[1].map(() => {
-                  return <div>z</div>;
+                {jobs[1].map((jobItem) => {
+                  return <JobCard key={uuid()} props={jobItem} />;
                 })}
               </div>
             </Item>
@@ -27,7 +28,7 @@ const Item = styled.div`
   justify-content: start;
   .title {
     text-align: center;
-    width: 150px;
+    min-width: 140px;
     margin-right: 10px;
     color: #5c667b;
     font-size: 14px;
@@ -38,7 +39,7 @@ const Item = styled.div`
   }
 `;
 const JobBoardStyle = styled.div`
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   display: flex;
   flex-direction: column;

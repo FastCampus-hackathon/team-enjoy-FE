@@ -61,64 +61,7 @@ const BottomInfo = styled.div`
     cursor: pointer;
   }
 `;
-function JobCard() {
-  const props = {
-    "expiration-timestamp": "1648133999",
-    "close-type": {
-      code: "1",
-      name: "접수마감일",
-    },
-    "posting-timestamp": "1645523633",
-    active: 1,
-    company: {
-      detail: {
-        name: "(주)에스제이더블유인터내셔널",
-        href: "http://www.saramin.co.kr/zf_user/company-info/view?csn=2148798782&utm_source=job-search-api&utm_medium=api&utm_campaign=saramin-job-search-api",
-      },
-    },
-    "modification-timestamp": "1645523633",
-    position: {
-      "job-type": {
-        code: "1",
-        name: "정규직",
-      },
-      "required-education-level": {
-        code: "7",
-        name: "대학졸업(2,3년)이상",
-      },
-      "job-code": {
-        code: "209,1499,1502,1504,1529,1614,1616",
-        name: "어학원,CSS,앱디자인,웹디자인,일러스트레이터,UI/UX디자인,PhotoShop,Sketch",
-      },
-      industry: {
-        code: "602",
-        name: "학원·어학원",
-      },
-      location: {
-        code: "101200",
-        name: "서울 &gt; 영등포구",
-      },
-      "job-mid-code": {
-        code: "2,15",
-        name: "IT개발·데이터,디자인",
-      },
-      title: "[시원스쿨] 웹디자이너(웹/앱 디자인) 채용",
-      "experience-level": {
-        code: 2,
-        min: 7,
-        max: 0,
-        name: "경력7년↑",
-      },
-    },
-    id: "42400106",
-    keyword: "어학원",
-    salary: {
-      code: "99",
-      name: "면접후 결정",
-    },
-    url: "http://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=42400106&utm_source=job-search-api&utm_medium=api&utm_campaign=saramin-job-search-api",
-    "opening-timestamp": "1645520400",
-  };
+function JobCard({ props }) {
   const [checked, setChecked] = useState(false);
 
   function calcDday(timestamp) {
