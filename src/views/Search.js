@@ -3,7 +3,6 @@ import JobPostingEl from "components/JobPostingEl";
 import styled from "styled-components";
 import MainHeader from "components/MainHeader";
 import { SearchWord } from "store/SearchContext";
-import axios from "axios";
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +19,6 @@ const ListBox = styled.div`
   width: 90%;
   height: 100%;
   margin: 0 auto;
-  /* background-color: #fff; */
   text-align: center;
 `;
 function Search() {

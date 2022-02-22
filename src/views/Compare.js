@@ -1,4 +1,5 @@
 import CompareBtn from "components/CompareBtn";
+import CompareModal from "components/CompareModal";
 import Header from "components/Header";
 import JobBoard from "components/JobBoard";
 import SideBar from "components/SideBar";
@@ -10,13 +11,15 @@ import { v1 as uuid } from "uuid";
 
 function Compare() {
   const [isClosed, setIsClosed] = useState(true);
+  const [modal, setModal] = useState(false);
   const { selectedTag, setSelectedTag, jobsNum, update, selectedList } =
     useContext(UserJobsData);
   useEffect(() => {
     update();
   }, []);
+
   return (
-    <Fragment>
+    <>
       <Header />
       <Main $isClosed={isClosed}>
         <SideBar isClosed={isClosed} setIsClosed={setIsClosed} />
@@ -37,6 +40,9 @@ function Compare() {
                 />
               );
             })}
+            <button className="goCompareBtn" onClick={() => setModal(true)}>
+              공고 비교하기
+            </button>
           </CompareBtnList>
           <JobBoard
             selectedList={selectedList}
@@ -44,14 +50,26 @@ function Compare() {
           />
         </Content>
       </Main>
-    </Fragment>
+      {modal && <CompareModal setModal={setModal} />}
+    </>
   );
 }
+
 const CompareBtnList = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 22px;
+  .goCompareBtn {
+    position: absolute;
+    right: 40px;
+    background-color: #00d3ab;
+    border: none;
+    color: #333;
+    font-weight: 700;
+    padding: 13px 24px;
+    border-radius: 30px;
+  }
 `;
 const Main = styled.div`
   display: flex;
