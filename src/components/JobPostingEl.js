@@ -15,6 +15,7 @@ const Container = styled.div`
   .title {
     width: fit-content;
     font-size: 15px;
+    line-height: 20px;
     font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
@@ -25,6 +26,8 @@ const JobPosting = styled.div`
   width: 77%;
 `;
 const Company = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 23%;
   margin-left: 17px;
   .companyInfo {
@@ -36,6 +39,7 @@ const Btn = styled.button`
     ${({ borderColor }) => (borderColor ? borderColor : "#ff5656")};
   color: ${({ textColor }) => (textColor ? textColor : "#dc3434")};
   font-size: 12px;
+  width: fit-content;
   background: none;
 `;
 const PostInfo = styled.div`
