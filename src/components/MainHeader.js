@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 
 function MainHeader({ isLogo, isInput }) {
+  const history = useNavigate();
   return (
     <WrapHeaderStyle>
       {isLogo && (
@@ -17,7 +19,11 @@ function MainHeader({ isLogo, isInput }) {
           <SearchBar />
         </SearchBarBox>
       )}
-      <Users>
+      <Users
+        onClick={() => {
+          history("/compare");
+        }}
+      >
         <img src={require("assets/profile.svg").default} alt="프로필" />
         <span>즐기조</span>
         <img
