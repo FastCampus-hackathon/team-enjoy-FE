@@ -13,7 +13,7 @@ export const UserJobsData = createContext({
 function UserJobs({ children }) {
   const [jobEducationList, setJobEducationList] = useState([]);
   const [jobExperienceList, setJobExperienceList] = useState([]);
-  const [selectedTag, setSelectedTag] = useState(compareBtnList[2]);
+  const [selectedTag, setSelectedTag] = useState(compareBtnList[3]);
   const [selectedList, setSelectedList] = useState([]);
   const [jobsNum, setJobsNum] = useState(0);
   useEffect(() => {
@@ -21,9 +21,9 @@ function UserJobs({ children }) {
   }, []);
 
   useEffect(() => {
-    if (compareBtnList[2] === selectedTag) {
+    if (compareBtnList[3] === selectedTag) {
       setSelectedList(jobEducationList);
-    } else if (compareBtnList[3] === selectedTag) {
+    } else if (compareBtnList[4] === selectedTag) {
       setSelectedList(jobExperienceList);
     } else {
       setSelectedList(jobEducationList);
