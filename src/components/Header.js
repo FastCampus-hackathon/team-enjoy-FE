@@ -69,7 +69,6 @@ const WrapHeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: right;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -78,5 +77,6 @@ const WrapHeaderStyle = styled.header`
   height: 64px;
   box-sizing: border-box;
   text-align: right;
+  background-color: #fff;
 `;
 export default Header;

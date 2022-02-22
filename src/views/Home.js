@@ -21,13 +21,14 @@ const HomeStyle = styled.div`
     img {
       display: block;
       width: calc(614 / 1920 * 100%);
-      margin: 0 auto 60px;
+      margin: -120px auto 60px;
     }
     position: fixed;
-    top: 0;
+    top: 120px;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

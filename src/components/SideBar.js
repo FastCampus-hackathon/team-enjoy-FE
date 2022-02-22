@@ -3,9 +3,8 @@ import styled from "styled-components";
 import sidebarList from "data/sidebarList";
 import SideBarItem from "./SideBarItem";
 import { v1 as uuid } from "uuid";
-import { useState } from "react";
-function SideBar() {
-  const [isClosed, setIsClosed] = useState(false);
+
+function SideBar({ isClosed, setIsClosed }) {
   return (
     <SideBarStyle $isClosed={isClosed}>
       <a href="/">
@@ -105,7 +104,13 @@ const SideBarStyle = styled.div`
     flex-direction: column;
     gap: 8px;
     margin: 0 auto;
-    width: 240px;
+    width: ${(props) => {
+      if (props.$isClosed) {
+        return "71px";
+      } else {
+        return "240px";
+      }
+    }};
   }
 `;
 export default SideBar;

@@ -9,6 +9,9 @@ function MainHeader({ isLogo, isInput }) {
     <WrapHeaderStyle>
       {isLogo && (
         <img
+          onClick={() => {
+            history("/");
+          }}
           className="logo"
           src={require("assets/saraminLogoText.svg").default}
           alt="로고"
@@ -68,9 +71,8 @@ const WrapHeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: right;
-  z-index: 30;
+  /* z-index: 100; */
   gap: calc(130 / 1920 * 100%);
-  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -78,5 +80,8 @@ const WrapHeaderStyle = styled.header`
   height: 120px;
   box-sizing: border-box;
   text-align: right;
+  .logo {
+    cursor: pointer;
+  }
 `;
 export default MainHeader;

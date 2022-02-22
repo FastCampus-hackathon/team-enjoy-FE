@@ -1,30 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Btn = styled.button`
-  padding: 13px 45px;
-  border-radius: 28px;
-  border: 2px solid #e4e4e4;
-  background: none;
-  color: #747272;
+  padding: 9px 19px;
+  border: 1px solid #d7dce5;
+  border-radius: 20px;
+  color: #5c667b;
+  font-size: 14px;
   font-weight: 700;
-
+  line-height: 20px;
+  background-color: #fff;
+  &:hover {
+    background-color: rgba(92, 102, 123, 0.1);
+  }
   &.selected {
     border-color: #4876ef;
+    color: #fff;
+    font-weight: bold;
+    background: #4876ef;
     box-shadow: 3px 3px 6px #dedede;
   }
 `;
-function CompareBtn() {
-  const [selected, setSelected] = useState(false);
-
+function CompareBtn({ title, SelectedTag, setSelectedTag }) {
   return (
     <Btn
       onClick={() => {
-        setSelected(!selected);
+        setSelectedTag(title);
       }}
-      className={selected ? "selected" : ""}
+      className={title === SelectedTag ? "selected" : ""}
     >
-      마감순
+      {title}
     </Btn>
   );
 }
