@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 const SearchBox = styled.div`
   display: flex;
   align-items: center;
-  width: 400px;
+  width: 100%;
   height: 40px;
   padding: 5px 10px;
   box-sizing: border-box;
