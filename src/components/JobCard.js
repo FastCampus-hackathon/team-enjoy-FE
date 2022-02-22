@@ -95,6 +95,9 @@ function JobCard({ props }) {
                 setSelectedJob(selectedJob.filter((x) => x.url !== props.url));
               }
               setChecked(!checked);
+            } else if (selectedJob.length === 3 && checked) {
+              setSelectedJob(selectedJob.filter((x) => x.url !== props.url));
+              setChecked(!checked);
             }
           }}
         />
