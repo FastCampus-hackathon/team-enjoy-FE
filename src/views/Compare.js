@@ -15,6 +15,7 @@ function Compare() {
   useEffect(() => {
     update();
   }, []);
+
   return (
     <Fragment>
       <Header />

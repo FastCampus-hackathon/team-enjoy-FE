@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { BsCheckSquare } from "react-icons/bs";
+import { SelectedJob } from "store/CompareJob";
 
 const Container = styled.div`
   position: relative;
@@ -63,13 +64,14 @@ const BottomInfo = styled.div`
 `;
 function JobCard({ props }) {
   const [checked, setChecked] = useState(false);
-
+  const { selectedJob, setSelectedJob } = useContext(SelectedJob);
   function calcDday(timestamp) {
     const props_date = new Date(Number(timestamp));
     const now = new Date();
     const gap = props_date.getTime() - now.getTime();
     return Math.floor(gap / (1000 * 60 * 60 * 24));
   }
+
   return (
     <Container>
       <div className="topBorder" />
@@ -85,7 +87,16 @@ function JobCard({ props }) {
           className="icon"
           size={20}
           color={checked ? "var(--primary-blue)" : "#dfdfdf"}
-          onClick={() => setChecked(!checked)}
+          onClick={() => {
+            if (selectedJob.length < 3) {
+              if (!checked) {
+                setSelectedJob((prev) => [...prev, props]);
+              } else {
+                setSelectedJob(selectedJob.filter((x) => x.url !== props.url));
+              }
+              setChecked(!checked);
+            }
+          }}
         />
       </BottomInfo>
     </Container>
