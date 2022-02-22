@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { CgCloseR } from "react-icons/cg";
+import { CgCloseR, CgSmileNeutral } from "react-icons/cg";
 import { SelectedJob } from "store/CompareJob";
 import DetailJobCard from "./DetailJobCard";
 
@@ -63,31 +63,50 @@ const SubTitle = styled.div`
     margin-bottom: 10px;
   }
 `;
+const ZeroSelected = styled.div`
+  text-align: center;
+  height: 60%;
+
+  .notice {
+    margin: 20px;
+    font-weight: 600;
+  }
+`;
 
 function CompareModal({ setModal }) {
-  const { selectedJob } = useContext(SelectedJob);
+  const { selectedJob, setSelectedJob } = useContext(SelectedJob);
   const subTitle = ["기업명", "근무지", "경력", "학력", "근무형태", "연봉"];
 
   return (
     <Background>
       <Modal>
         <h1>선택 공고 비교하기</h1>
-        <Compared>
-          <SubTitle>
-            {subTitle.map((x, idx) => (
-              <div key={idx} className="subEl">
-                {x}
-              </div>
+        {selectedJob.length ? (
+          <Compared>
+            <SubTitle>
+              {subTitle.map((x, idx) => (
+                <div key={idx} className="subEl">
+                  {x}
+                </div>
+              ))}
+            </SubTitle>
+            {selectedJob.map((x, idx) => (
+              <DetailJobCard key={idx} props={x} />
             ))}
-          </SubTitle>
-          {selectedJob.map((x, idx) => (
-            <DetailJobCard key={idx} props={x} />
-          ))}
-        </Compared>
+          </Compared>
+        ) : (
+          <ZeroSelected>
+            <CgSmileNeutral size={100} />
+            <div className="notice">선택된 공고가 없습니다.</div>
+          </ZeroSelected>
+        )}
         <CgCloseR
           className="closeBtn"
           size={28}
-          onClick={() => setModal(false)}
+          onClick={() => {
+            setModal(false);
+            setSelectedJob([]);
+          }}
         />
       </Modal>
     </Background>
