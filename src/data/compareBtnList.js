@@ -9,11 +9,20 @@ const compareBtnList = [
     },
   },
   {
+    title: "직무/직업별",
+    detailList: {
+      any: "프론트엔드",
+      highschool: "서버",
+      univ: "백엔드",
+      "univ-4year": "보안",
+    },
+  },
+  {
     title: "근무지별",
     detailList: {
       any: "서울전체",
       highschool: "서울 서초구",
-      univ: "서울 강남구",
+      univ: "",
       "univ-4year": "서울 영등포구",
     },
   },
