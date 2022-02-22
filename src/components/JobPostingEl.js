@@ -10,6 +10,7 @@ const Container = styled.div`
   box-sizing: border-box;
   justify-content: space-between;
   padding: 20px 39px;
+  background-color: #fff;
   & + & {
     border-top: 1px solid #e6e6e6;
   }
