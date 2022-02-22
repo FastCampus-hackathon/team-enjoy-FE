@@ -71,7 +71,6 @@ const WrapHeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: right;
-  /* z-index: 100; */
   gap: calc(130 / 1920 * 100%);
   top: 0;
   left: 0;

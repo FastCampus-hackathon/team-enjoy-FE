@@ -21,15 +21,15 @@ const Btn = styled.button`
     box-shadow: 3px 3px 6px #dedede;
   }
 `;
-function CompareBtn({ title, SelectedTag, setSelectedTag }) {
+function CompareBtn({ item, selectedTag, setSelectedTag }) {
   return (
     <Btn
       onClick={() => {
-        setSelectedTag(title);
+        setSelectedTag(item);
       }}
-      className={title === SelectedTag ? "selected" : ""}
+      className={item === selectedTag ? "selected" : ""}
     >
-      {title}
+      {item.title}
     </Btn>
   );
 }

@@ -1,14 +1,17 @@
 import CompareBtn from "components/CompareBtn";
 import Header from "components/Header";
+import JobBoard from "components/JobBoard";
 import SideBar from "components/SideBar";
 import compareBtnList from "data/compareBtnList";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
+import { UserJobsData } from "store/UserJobs";
 import styled from "styled-components";
 import { v1 as uuid } from "uuid";
 
 function Compare() {
   const [isClosed, setIsClosed] = useState(true);
-  const [SelectedTag, setSelectedTag] = useState(compareBtnList[0]);
+  const { selectedTag, setSelectedTag, selectedList } =
+    useContext(UserJobsData);
   return (
     <Fragment>
       <Header />
@@ -25,13 +28,17 @@ function Compare() {
               return (
                 <CompareBtn
                   setSelectedTag={setSelectedTag}
-                  SelectedTag={SelectedTag}
+                  selectedTag={selectedTag}
                   key={uuid()}
-                  title={item}
+                  item={item}
                 />
               );
             })}
           </CompareBtnList>
+          <JobBoard
+            selectedList={selectedList}
+            detailList={selectedTag.detailList}
+          />
         </Content>
       </Main>
     </Fragment>
@@ -41,6 +48,7 @@ const CompareBtnList = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 22px;
 `;
 const Main = styled.div`
   display: flex;
