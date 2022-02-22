@@ -13,21 +13,20 @@ const Container = styled.div`
 const Main = styled.div`
   background-color: #4876ef33;
   flex: 1;
+  overflow-y: scroll;
 `;
 
 const ListBox = styled.div`
   width: 90%;
   height: 100%;
   margin: 0 auto;
-  background-color: #fff;
-  /* border: 1px solid #e6e6e6; */
+  /* background-color: #fff; */
   text-align: center;
 `;
 function Search() {
   const { searchWord, getJobPosting, resultSearch } = useContext(SearchWord);
 
   useEffect(() => {
-    console.log("수정", searchWord);
     if (searchWord) {
       getJobPosting(searchWord);
     }
