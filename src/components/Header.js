@@ -10,7 +10,12 @@ function Header() {
       </Icons>
       <Users>
         <img src={require("assets/profile.svg").default} alt="프로필" />
-        <span>사용자</span>
+        <span>즐기조</span>
+        <img
+          className="snsLogo"
+          src={require("assets/google.svg").default}
+          alt="구글"
+        />
       </Users>
     </WrapHeaderStyle>
   );
@@ -34,6 +39,10 @@ const Users = styled.div`
   span {
     font-size: 14px;
     color: var(--light-gray);
+  }
+  .snsLogo {
+    width: 16px;
+    height: 16px;
   }
 `;
 const Icons = styled.div`
