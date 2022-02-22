@@ -3,12 +3,9 @@ import axios from "axios";
 import compareBtnList from "data/compareBtnList";
 
 export const UserJobsData = createContext({
-  jobEducationList: [],
-  jobExperienceList: [],
   selectedTag: {},
   setSelectedTag: () => {},
   selectedList: [],
-  setSelectedList: () => {},
 });
 
 function UserJobs({ children }) {
@@ -46,10 +43,7 @@ function UserJobs({ children }) {
       value={{
         selectedTag,
         setSelectedTag,
-        setSelectedList,
         selectedList,
-        jobExperienceList,
-        jobEducationList,
       }}
     >
       {children}
