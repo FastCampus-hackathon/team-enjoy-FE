@@ -42,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://bc72-218-234-162-13.ngrok.io"
 }

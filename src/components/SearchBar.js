@@ -1,6 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { SearchWord } from "store/SearchContext";
 
 const SearchBox = styled.div`
   display: flex;
@@ -46,9 +48,11 @@ const SearchBox = styled.div`
     }
   }
 `;
-function SearchBar() {
+function SearchBar({ routerAddress }) {
   const inputFocus = useRef();
-  const [searchWord, setSearchWord] = useState("");
+  const [input, setInput] = useState("");
+  const { searchWord, setSearchWord } = useContext(SearchWord);
+  const history = useNavigate();
 
   return (
     <SearchBox
@@ -58,14 +62,18 @@ function SearchBar() {
     >
       <AiOutlineSearch className="searchIcon" size={24} />
       <input
-        onChange={(e) => setSearchWord(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
-            console.log(searchWord);
+            if (routerAddress) {
+              history(routerAddress);
+            }
+            setSearchWord(input);
           }
         }}
-        placeholder="검색어를 입력하세요"
+        placeholder={searchWord ? searchWord : "검색어를 입력하세요"}
         ref={inputFocus}
+        value={input}
       />
     </SearchBox>
   );

@@ -1,8 +1,13 @@
 import AllRoutes from "routes/Routes";
 import "./App.css";
+import Store from "store/Store";
 
 function App() {
-  return <AllRoutes />;
+  return (
+    <Store>
+      <AllRoutes />
+    </Store>
+  );
 }
 
 export default App;

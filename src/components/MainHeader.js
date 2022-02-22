@@ -70,7 +70,7 @@ const WrapHeaderStyle = styled.header`
   justify-content: right;
   z-index: 30;
   gap: calc(130 / 1920 * 100%);
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;

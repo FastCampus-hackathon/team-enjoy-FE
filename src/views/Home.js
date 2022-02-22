@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "components/SearchBar";
 import styled from "styled-components";
 import MainHeader from "components/MainHeader";
+
 function Home() {
   return (
     <HomeStyle>
@@ -9,7 +10,7 @@ function Home() {
       <div className="main">
         <img src={require("assets/saraminLogoText.svg").default} alt="사람인" />
         <SearchBarBox>
-          <SearchBar />
+          <SearchBar routerAddress={"/search"} />
         </SearchBarBox>
       </div>
     </HomeStyle>
